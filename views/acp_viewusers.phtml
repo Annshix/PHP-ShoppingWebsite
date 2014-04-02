@@ -1,0 +1,25 @@
+<?php require('header.php') ?>
+<?php require('acp_menu.phtml') ?>
+<div class="grid_10 omega">
+    <h1>View Users</h1>
+    <?php if (count($view->userList) > 0) {
+        ?>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Forename</th>
+                <th>Surname</th>
+                <th>Email</th>
+            </tr>
+            <?php foreach ($view->userList as $member) : ?>
+                <tr>                       
+                    <td><?php echo htmlentities($member->getID()); ?></td>
+                    <td><?php echo htmlentities($member->getSurname()); ?></td>
+                    <td><?php echo htmlentities($member->getForename()); ?></td>
+                    <td><?php echo htmlentities($member->getEmail()); ?></td>
+                </tr>
+            <?php endforeach;
+        } ?>
+    </table>
+</div>
+<?php require('footer.phtml') ?>

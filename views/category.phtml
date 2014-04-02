@@ -1,0 +1,36 @@
+<?php require('header.php') ?>
+<h1><?php echo $view->category; ?> phones</h1>
+<p>
+    To view more details of the phone, click the 'More Details' link at the end of the item's row.
+</p>
+<?php if (count($view->list) > 0) {
+    ?>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th>Image</th>
+            <th>Details</th>
+        </tr>
+        <?php foreach ($view->list as $item) : ?>
+            <tr>                       
+                <td><?php echo htmlentities($item->getName()); ?></td>
+                <td><?php echo htmlentities($item->getDescription()); ?></td>
+                <td>&pound;<?php echo htmlentities($item->getCost()); ?></td>
+                <td><?php
+        if ($item->getImage() == 'null') {
+            echo 'There is currently no image for this item.';
+        } else {
+                ?>
+                        <img src='images/<?php echo htmlentities($item->getImage()) ?>' class='scalingimage' alt='<?php echo htmlentities($item->getName()) ?>' />
+                    <?php } ?>
+                </td>
+                <td class="tablelink">
+                    <a href="viewitem.php?id=<?php echo htmlentities($item->getid()); ?>">More Details</a>
+                </td>
+            </tr>
+        <?php endforeach;
+    } ?>
+</table>
+<?php require('footer.phtml') ?>

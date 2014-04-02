@@ -1,0 +1,26 @@
+<?php require('header.php') ?>
+<h1>Purchased</h1>
+<p>You have purchased the items below:</p>
+<?php if ($view->purchased[0] != "") {
+    ?>
+<div class="grid_9">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Cost</th>
+        </tr>
+        <?php foreach ($view->purchased as $item) : ?>
+            <tr>                       
+                <td><?php echo htmlentities($item['name']); ?></td>
+                <td>&pound;<?php echo htmlentities($item['cost']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table> </div>
+<?php
+} else {
+    ?>
+<p>Your cart was empty, you have purchased no items.</p>
+    <?php
+}
+require('footer.phtml')
+?>

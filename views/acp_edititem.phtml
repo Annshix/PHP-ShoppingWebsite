@@ -1,0 +1,74 @@
+<?php require('header.php') ?>
+<?php require('acp_menu.phtml') ?>
+<div class="grid_10 omega">
+    <h1>Edit Item: <?php echo htmlentities($view->item['name']); ?></h1>
+    <p><?php echo $view->uploadMessage;
+echo $view->editMessage; ?></p>
+    <form class="grid_9" action="<?php echo $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING']; ?>" method="post" enctype="multipart/form-data">
+        <div class="grid_4">
+            <p>
+                <label>Name:</label><br/>
+                <input name="name" type="text" value="<?php echo htmlentities($view->item['name']); ?>"/>
+            </p>
+            <p>
+                <label>Operating System:</label><br/>
+                <select name="os">
+                    <option value="Android" 
+                    <?php
+                    if ($view->item['os'] == 'Android') {
+                        echo "selected='selected'";
+                    }
+                    ?>>Android</option>
+                    <option value="WebOS" 
+                    <?php
+                    if ($view->item['os'] == 'WebOS') {
+                        echo "selected='selected'";
+                    }
+                    ?>>WebOS</option>
+                    <option value="Windows Phone 7" 
+                    <?php
+                    if ($view->item['os'] == 'Windows Phone 7') {
+                        echo "selected='selected'";
+                    }
+                    ?>>Windows Phone 7</option>
+                    <option value="Blackberry" <?php
+                            if ($view->item['os'] == 'Blackberry') {
+                                echo "selected='selected'";
+                            }
+                    ?>>Blackberry</option>
+                </select></p>
+            <p>
+                <label>Description:</label><br/>
+                <textarea name="description"><?php echo htmlentities($view->item['description']); ?></textarea>
+            </p>
+            <p>
+                <label>Cost: <strong>Enter only the number.</strong></label><br/>
+                <input name="cost" type="text" value="<?php echo htmlentities($view->item['cost']); ?>" />
+            </p>      
+            <p>
+                <input name="edit" type="submit" value="Edit Item" />       
+            </p>
+            <p><strong>Warning:</strong> You cannot recover the item once it has been deleted.</p>
+            <p>
+                <input name="delete" type="submit" value="Delete Item" />
+            </p>
+        </div>
+        <div class="grid_3">
+            <p>
+                Image:<br/>
+                <?php
+                if ($view->item['image'] == 'null') {
+                    echo 'There is currently no image for this item.';
+                } else {
+                    ?>
+                    <img src='images/<?php echo htmlentities($view->item['image']) ?>' class='scalingimage' alt='<?php echo htmlentities($view->item['name']) ?>' />
+                <?php } ?>
+            </p>
+            <p>
+                <label>Change Image:</label>
+                <input type="file" name="image" value="" />
+            </p>
+        </div>
+    </form>
+</div>
+<?php require('footer.phtml') ?>

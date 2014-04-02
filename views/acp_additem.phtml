@@ -1,0 +1,38 @@
+<?php require('header.php') ?>
+<?php require('acp_menu.phtml') ?>
+<div class="grid_10 omega">
+    <h1>Add Item</h1>
+    <p><?php echo $view->uploadMessage;
+echo $view->addMessage; ?></p>
+    <form class="grid_4" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+        <p>
+            <label>Name:</label><br/>
+            <input name="name" type="text" />
+        </p>
+        <p>
+            <label>Operating System:</label><br/>
+            <select name="os">
+                <option value="Android">Android</option>
+                <option value="WebOS">WebOS</option>
+                <option value="Windows Phone 7">Windows Phone 7</option>
+                <option value="Blackberry">Blackberry</option>
+            </select></p>
+        <p>
+            <label>Description:</label><br/>
+            <textarea name="description"></textarea>
+        </p>
+            <p>
+                <label>Cost: <strong>Enter only the number.</strong></label><br/>
+                <input name="cost" type="text" />
+            </p>   
+        <p>
+            <label>Upload Image:</label>
+            <input type="file" name="image" value="" />
+        </p>
+        <p>
+            <input name="submit" type="submit" value="Add Item" />
+            <input name="reset" type="reset" value="Reset" />            
+        </p>
+    </form>
+</div>
+<?php require('footer.phtml') ?>

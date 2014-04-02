@@ -1,0 +1,45 @@
+<?php require('header.php') ?>
+<h1>Shopping Cart</h1>
+<?php if ($view->logged == true) { ?>
+<p>This is your shopping cart, it will be emptied when you log out of your account. To remove an item from your cart select the delete link at the end of the item's row. If you wish to purchase these items, click the purchase link below.</p>
+
+<?php if ($view->cart[0] != "") {
+    ?>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>OS</th>
+            <th>Description</th>
+            <th>Cost</th>
+            <th>Image</th>
+            <th>Delete</th>
+        </tr>
+        <?php foreach ($view->cart as $item) : ?>
+            <tr>                       
+                <td><?php echo htmlentities($item['name']); ?></td>
+                <td><?php echo htmlentities($item['os']); ?></td>
+                <td><?php echo htmlentities($item['description']); ?></td>
+                <td>&pound;<?php echo htmlentities($item['cost']); ?></td>
+                <td><?php
+        if ($item['image'] == 'null') {
+            echo 'There is currently no image for this item.';
+        } else {
+                ?>
+                        <img src='images/<?php echo $item['image'] ?>' class='scalingimage' alt='<?php echo htmlentities($item['name']) ?>' />
+                    <?php } ?>
+                </td>
+                <td class="tablelink">
+                    <a href="cartdelete.php?id=<?php echo htmlentities($item['item_id']); ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach;
+    } ?>
+</table>
+<p><a href="purchase.php">Purchase Items</a></p>
+<?php }
+else {
+    ?>
+<p>You must have an account to access the shopping cart. Please <a href="login.php">login or register</a>.</p>
+<?php
+}
+require('footer.phtml') ?>

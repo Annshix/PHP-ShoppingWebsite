@@ -1,0 +1,17 @@
+<?php require('header.php') ?>
+
+<?php
+if ($view->item['image'] == 'null') {
+    echo 'There is currently no image for this item.';
+} else {
+    ?>
+    <img src='images/<?php echo htmlentities($view->item['image']) ?>' class='grid_3 alpha' alt='<?php echo htmlentities($view->item['name']) ?>' />
+<?php } ?>
+<div class="grid_9 omega">
+    <h1><?php echo htmlentities($view->item['name']); ?></h1>
+    <h2><?php echo htmlentities($view->item['os']); ?></h2>
+    <p><?php echo htmlentities($view->item['description']); ?></p>
+    <p>Cost: &pound;<?php echo htmlentities($view->item['cost']); ?></p>
+    <p><a href="addtocart.php?id=<?php echo htmlentities($view->item['item_id'])?>">Add to Cart</a></p>
+</div>
+<?php require('footer.phtml') ?>

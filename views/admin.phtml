@@ -1,0 +1,13 @@
+<?php require('header.php') ?>
+<p>Enter the correct password below to access the administration panel for this site.</p>
+<?php if($error == true) {
+    echo "<p>You have entered an incorrect password.</p>";   
+    $error = false;
+    } ?>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <div>
+            Password: <input type="password" name="password" /><br />
+            <input type="submit" name="submit" value="submit" />
+        </div>
+    </form>
+<?php require('footer.phtml') ?>

@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+    <head>
+        <title>Better Phones - <?php echo $view->pageTitle; ?></title>
+        <link href="views/css/reset.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="views/css/960.css" media="screen" rel="stylesheet" type="text/css" >
+        <link href="views/css/style.css" media="screen" rel="stylesheet" type="text/css" >
+    </head>
+    <body>
+        <div id="container" class="container_12"> 
+            <div id="title" class="grid_12"> 
+                <div class="grid_9 alpha">
+                    <a href="index.php"><img src="images/title.png" alt="Better Phones" id="titleimage" /></a>
+                </div>
+                <div class="grid_3 omega" id="titlemenu">
+                    <ul>
+                        <li><a href="cart.php">Shopping Cart</a></li>
+                        <li>
+                            <?php
+                            if ($view->logged == true) {
+                                echo "<a href='logout.php'>Logout</a>";
+                            } else {
+                                echo "<a href='login.php'>Register / Login</a>";
+                            }
+                            ?>
+                        </li>
+                        <li><a href="index.php">Home</a></li>
+                </div>
+            </div>
+            <div id="mainmenu" class="grid_12">
+                <ul>
+                    <li class="grid_3"><a href="category.php?cat=0">Android</a></li>
+                    <li class="grid_3"><a href="category.php?cat=1">Windows Phone</a></li>
+                    <li class="grid_3"><a href="category.php?cat=2">Blackberry</a></li>
+                    <li class="grid_3"><a href="category.php?cat=3">WebOS</a></li>
+                </ul>
+            </div>
+            <div id="content" class="grid_12">	

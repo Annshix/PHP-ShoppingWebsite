@@ -1,0 +1,46 @@
+<?php require('header.php') ?>
+<div class="prefix_1 grid_5 alpha">
+    <h1>Login</h1>
+    <p>Already have an account with us? Login here using your email and password.</p>
+    <p><strong><?php echo $view->loginMessage ?></strong></p>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <p>
+            <label>Email:</label><br/>
+            <input name="email" type="text" />
+        </p>
+        <p>
+            <label>Password:</label><br/>
+            <input name="password" type="password" />
+        </p>   
+        <p>
+            <input name="login" type="submit" value="Log In" />         
+        </p>
+    </form>
+</div>
+<div class="grid_5 omega">
+    <h1>Register</h1>
+    <p>Don't have an account with us? Don't worry! Registering is quick and easy using the form below.</p>
+    <p><strong><?php echo $view->registerMessage ?></strong></p>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">        
+        <p>
+            <label>First Name:</label><br/>
+            <input name="forename" type="text" />
+        </p>  
+        <p>
+            <label>Surname:</label><br/>
+            <input name="surname" type="text" />
+        </p>  
+        <p>
+            <label>Email:</label><br/>
+            <input name="email" type="text" />
+        </p>
+        <p>
+            <label>Password:</label><br/>
+            <input name="password" type="password" />
+        </p>   
+        <p>
+            <input name="register" type="submit" value="Register" />         
+        </p>
+    </form>
+</div>
+<?php require('footer.phtml') ?>

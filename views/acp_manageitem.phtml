@@ -1,0 +1,42 @@
+<?php require('header.php') ?>
+<?php require('acp_menu.phtml') ?>
+<div class="grid_10 omega">
+    <h1>Manage Items</h1>
+    <p>
+        To edit or delete an item click the Edit/Delete link at the end of the item's row.
+    </p>
+
+    <?php if (count($view->itemList) > 0) {
+        ?>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>OS</th>
+                <th>Description</th>
+                <th>Cost</th>
+                <th>Image</th>
+                <th>Manage</th>
+            </tr>
+            <?php foreach ($view->itemList as $item) : ?>
+                <tr>                       
+                    <td><?php echo htmlentities($item->getName()); ?></td>
+                    <td><?php echo htmlentities($item->getOS()); ?></td>
+                    <td><?php echo htmlentities($item->getDescription()); ?></td>
+                    <td>&pound;<?php echo htmlentities($item->getCost()); ?></td>
+                    <td><?php
+        if ($item->getImage() == 'null') {
+            echo 'There is currently no image for this item.';
+        } else {
+                    ?>
+                            <img src='images/<?php echo htmlentities($item->getImage()) ?>' class='scalingimage' alt='<?php echo htmlentities($item->getName()) ?>' />
+                        <?php } ?>
+                    </td>
+                    <td class="tablelink">
+                        <a href="acp_edititem.php?id=<?php echo htmlentities($item->getid()); ?>">Edit/Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach;
+        } ?>
+    </table>
+</div>
+<?php require('footer.phtml') ?>
